@@ -1,4 +1,6 @@
 package com.selcuk.utils;
+import com.selcuk.constants.FrameworkConstants;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -14,10 +16,11 @@ public class ReadPropertyFile {
     private static Properties properties = new Properties();
     private static final Map<String,String> CONFIGMAP = new HashMap<>();
     static {
-        try (FileInputStream fileInputStream = new FileInputStream(System.getProperty("user.dir") + "/src/test/config/config.properties")) {
-            properties.load(fileInputStream);
+        try {
+            FileInputStream file = new FileInputStream(FrameworkConstants.getConfigfilepath());
+            properties.load(file);
             // Traditional way
-            for (Map.Entry<Object,Object> entry : properties.entrySet()){
+            for(Map.Entry<Object,Object> entry : properties.entrySet()){
                 CONFIGMAP.put(String.valueOf(entry.getKey()),String.valueOf(entry.getValue()));
             }
 //            // using java streams
