@@ -21,7 +21,7 @@ public class ReadPropertyFile {
             properties.load(file);
             // Traditional way
             for(Map.Entry<Object,Object> entry : properties.entrySet()){
-                CONFIGMAP.put(String.valueOf(entry.getKey()),String.valueOf(entry.getValue()));
+                CONFIGMAP.put(String.valueOf(entry.getKey()),String.valueOf(entry.getValue()).trim());
             }
 //            // using java streams
 //            properties.entrySet().forEach(entry -> CONFIGMAP.put(String.valueOf(entry.getKey()),String.valueOf(entry.getValue())));
